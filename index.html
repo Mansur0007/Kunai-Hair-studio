@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kunai Hair Studio – Салон красоты премиум-класса в Караганде</title>
+    <!-- Иконки FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0b0f17;
+            --card-bg: #161f2e;
+            --accent-gold: #e5c158;
+            --accent-glow: #d4af37;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --whatsapp-green: #25D366;
+            --whatsapp-hover: #1ebc57;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            padding: 20px 10px;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Шапка сайта */
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(145deg, #182232, #0d141e);
+            border-radius: 24px;
+            border: 1px solid rgba(229, 193, 88, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(229,193,88,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .badge-rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(229, 193, 88, 0.15);
+            color: var(--accent-gold);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            border: 1px solid rgba(229, 193, 88, 0.3);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            background: linear-gradient(90deg, #fff, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Главная кнопка WhatsApp */
+        .cta-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--whatsapp-green), var(--whatsapp-hover));
+            color: #fff;
+            text-decoration: none;
+            padding: 18px 24px;
+            border-radius: 18px;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+        }
+
+        /* Карточки секций */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Список услуг и цен */
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .service-name {
+            font-size: 15px;
+            color: var(--text-main);
+        }
+
+        .service-price {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            white-space: nowrap;
+        }
+
+        /* Список удобств */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .feature-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .feature-box i {
+            color: var(--accent-gold);
+            font-size: 16px;
+        }
+
+        /* Адрес и время работы */
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-row i {
+            color: var(--accent-gold);
+            font-size: 18px;
+            margin-top: 2px;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 12px;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Шапка -->
+    <header>
+        <div class="badge-rating"><i class="fa-solid fa-star"></i> 4.9 • Превосходные отзывы</div>
+        <h1>Kunai Hair Studio</h1>
+        <p class="subtitle">Студия эстетики волос • Караганда</p>
+    </header>
+
+    <!-- Основное действие (Запись в WhatsApp) -->
+    <a href="https://wa.me/77004247056?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D1%83" target="_blank" class="cta-button">
+        <i class="fa-brands fa-whatsapp fa-xl"></i> Записаться через WhatsApp
+    </a>
+
+    <!-- Прайс-лист -->
+    <div class="card">
+        <div class="card-title"><i class="fa-solid fa-scissors"></i> Услуги и стоимость</div>
+        <div class="services-list">
+            <div class="service-item">
+                <span class="service-name">Женская стрижка</span>
+                <span class="service-price">от 7 000 ₸</span>
+            </div>
+            <div class="service-item">
+                <span class="service-name">Сложное окрашивание</span>
+                <span class="service-price">от 45 000 ₸</span>
+            </div>
+            <div class="service-item">
+                <span class="service-name">Выход из черного</span>
+                <span class="service-price">от 50 000 ₸</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Удобства -->
+    <div class="card">
+        <div class="card-title"><i class="fa-solid fa-sparkles"></i> Сервис & Удобства</div>
+        <div class="features-grid">
+            <div class="feature-box"><i class="fa-solid fa-wifi"></i> Бесплатный Wi-Fi</div>
+            <div class="feature-box"><i class="fa-solid fa-square-parking"></i> Парковка рядом</div>
+            <div class="feature-box"><i class="fa-solid fa-credit-card"></i> Оплата Kaspi / QR</div>
+            <div class="feature-box"><i class="fa-solid fa-wheelchair"></i> Безбарьерный вход</div>
+        </div>
+    </div>
+
+    <!-- Локация и время работы -->
+    <div class="card">
+        <div class="card-title"><i class="fa-solid fa-location-dot"></i> Контакты и адрес</div>
+        <div class="info-row">
+            <i class="fa-solid fa-map-pin"></i>
+            <div>
+                <strong>Адрес:</strong><br>
+                г. Караганда, Юго-Восток, ул. Жанторе Абишева, 2Б
+            </div>
+        </div>
+        <div class="info-row">
+            <i class="fa-solid fa-clock"></i>
+            <div>
+                <strong>Режим работы:</strong><br>
+                Ежедневно с 09:00 до 20:30 (по предварительной записи)
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Kunai Hair Studio. Все права защищены.
+    </footer>
+
+</div>
+
+</body>
+</html>
